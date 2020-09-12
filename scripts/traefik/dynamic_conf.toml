@@ -1,0 +1,16 @@
+[http]
+
+  [http.routers]
+    [http.routers.routerTest]
+      service = "k3s"
+      rule = "Host(`10.0.0.30`)"
+
+  [http.services]
+    [http.services.k3s]
+      [http.services.k3s.loadBalancer]
+        [[http.services.k3s.loadBalancer.servers]]
+          url = "https://10.0.0.11:6443"
+        [[http.services.k3s.loadBalancer.servers]]
+          url = "https://10.0.0.12:6443"
+        [[http.services.k3s.loadBalancer.servers]]
+          url = "https://10.0.0.13:6443"
