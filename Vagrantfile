@@ -1,7 +1,6 @@
 MASTER_COUNT = 3
 NODE_COUNT = 3
 IMAGE = "ubuntu/bionic64"
-IMAGE_TRAEFIK = "generic/alpine38"
 
 Vagrant.configure("2") do |config|
 
@@ -15,8 +14,6 @@ Vagrant.configure("2") do |config|
       kubemasters.vm.provision "shell", privileged: true,  path: "scripts/master_install.sh"
     end
   end
-
-
 
   (1..NODE_COUNT).each do |i|
     config.vm.define "kubenode#{i}" do |kubenodes|
